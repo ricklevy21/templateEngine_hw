@@ -41,9 +41,54 @@ const buildTeam = () => {
         //console.log(answers)
         const manager = new Manager(answers.name, answers.id, answers.email, answers.office)
         team.push(manager)
+        console.log(team)
         addToTeam()
     })
+    .catch(err =>{
+        console.log(err)
+    })
 }
+
+const addToTeam = () => {
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "add",
+            message: "Would you like to add another person to your team?",
+            choices: [
+                "Add an Intern",
+                "Add and Engineer",
+                "No, I am finished adding people to the team."
+            ]
+        }
+    ]).then(answers => {
+        //console.log(answers)
+        if (answers.add === "Add an Intern"){
+            addIntern()
+        }
+    })
+}
+
+const addIntern = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "add",
+            message: "Would you like to add another person to your team?",
+            choices: [
+                "Add an Intern",
+                "Add and Engineer",
+                "No, I am finished adding people to the team."
+            ]
+        }
+    ]).then(answers => {
+        //console.log(answers)
+        if (answers.add === "Add an Intern"){
+            addIntern()
+        }
+    })
+}
+
 
 
 buildTeam()
