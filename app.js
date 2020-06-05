@@ -1,4 +1,4 @@
-//define dependecies
+//import dependecies
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -11,7 +11,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-const team = []
+const employees = []
 
 
 //functioin to initiate the process of building a team. starts with adding a manager
@@ -41,7 +41,7 @@ const buildTeam = () => {
         //create a new manager object by using the Manager class constructor
         const manager = new Manager(answers.name, answers.id, answers.email, answers.office)
         //add the manager to the team array
-        team.push(manager)
+        employees.push(manager)
         //console.log(team)
         //call funtion to see if more people need to be added to the team
         addToTeam()
@@ -73,7 +73,7 @@ const addToTeam = () => {
         } else if (answers.add === "Add and Engineer"){
             addEngineer()
         } else if (answers.add === "No, I am finished adding people to the team."){
-            render(team)
+            render(employees)
         }
     })
 }
@@ -105,7 +105,7 @@ const addIntern = () => {
         //create a new intern object using the Intern class constuctor
         const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
         //add the intern to the team array
-        team.push(intern)
+        employees.push(intern)
         //console.log(team)
         //call funtion to see if more people need to be added to the team
         addToTeam()
@@ -139,7 +139,7 @@ const addEngineer = () => {
         //create a new engineer object using the Intern class constuctor
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
         //add the engineer to the team array
-        team.push(engineer)
+        employees.push(engineer)
         //console.log(team)
         //call funtion to see if more people need to be added to the team
         addToTeam()
@@ -160,10 +160,6 @@ buildTeam()
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
 
 // HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
 // and Intern classes should all extend from a class named Employee; see the directions
